@@ -28,78 +28,71 @@ using DOOR.Shared.DTO;
 using DOOR.Shared.Utils;
 using DOOR.Server.Controllers.Common;
 
-namespace CSBA6.Server.Controllers.app
+namespace DOOR.Server.Controllers.UD
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CourseController : BaseController
+    public class SchoolController : BaseController
     {
-        public CourseController(DOOROracleContext _DBcontext,
-            OraTransMsgs _OraTransMsgs)
-            : base(_DBcontext, _OraTransMsgs)
+        public SchoolController(DOOROracleContext _DBcontext,
+    OraTransMsgs _OraTransMsgs)
+    : base(_DBcontext, _OraTransMsgs)
 
         {
         }
 
-
         [HttpGet]
-        [Route("GetCourse")]
-        public async Task<IActionResult> GetCourse()
+        [Route("GetSchool")]
+        public async Task<IActionResult> GetSchool()
         {
-            List<CourseDTO> lst = await _context.Courses
-                .Select(sp => new CourseDTO
+            List<SchoolDTO> lst = await _context.Schools
+                .Select(sp => new SchoolDTO
                 {
-                    Cost = sp.Cost,
-                    CourseNo = sp.CourseNo,
-                    CreatedBy = sp.CreatedBy,
-                    CreatedDate = sp.CreatedDate,
-                    Description = sp.Description,
-                    ModifiedBy = sp.ModifiedBy,
-                    ModifiedDate = sp.ModifiedDate,
-                    Prerequisite = sp.Prerequisite
+                   CreatedBy = sp.CreatedBy,
+                   CreatedDate = sp.CreatedDate,
+                   ModifiedBy = sp.ModifiedBy,
+                   ModifiedDate = sp.ModifiedDate,
+                   SchoolId = sp.SchoolId,
+                   SchoolName = sp.SchoolName,
+                  
                 }).ToListAsync();
             return Ok(lst);
         }
-
-
         [HttpGet]
-        [Route("GetCourse/{_CourseNo}")]
-        public async Task<IActionResult> GetCourse(int _CourseNo)
+        [Route("GetSchool/{_SchoolID}")]
+        public async Task<IActionResult> GetSchool(int _SchoolID)
         {
-            CourseDTO? lst = await _context.Courses
-                .Where(x => x.CourseNo == _CourseNo)
-                .Select(sp => new CourseDTO
+            SchoolDTO? lst = await _context.Schools
+                .Where(x => x.SchoolId == _SchoolID)
+                .Select(sp => new SchoolDTO
                 {
-                    Cost = sp.Cost,
-                    CourseNo = sp.CourseNo,
                     CreatedBy = sp.CreatedBy,
                     CreatedDate = sp.CreatedDate,
-                    Description = sp.Description,
                     ModifiedBy = sp.ModifiedBy,
                     ModifiedDate = sp.ModifiedDate,
-                    Prerequisite = sp.Prerequisite
+                    SchoolId = sp.SchoolId,
+                    SchoolName = sp.SchoolName,
+
                 }).FirstOrDefaultAsync();
             return Ok(lst);
         }
 
-
         [HttpPost]
-        [Route("PostCourse")]
-        public async Task<IActionResult> PostCourse([FromBody] CourseDTO _CourseDTO)
+        [Route("PostSchool")]
+        public async Task<IActionResult> PostSchool([FromBody] SchoolDTO _SchoolDTO)
         {
             try
             {
-                Course c = await _context.Courses.Where(x => x.CourseNo == _CourseDTO.CourseNo).FirstOrDefaultAsync();
+                School c = await _context.Schools.Where(x => x.SchoolId == _SchoolDTO.SchoolId).FirstOrDefaultAsync();
 
                 if (c == null)
                 {
-                    c = new Course
+                    c = new School
                     {
-                        Cost = _CourseDTO.Cost,
-                        Description = _CourseDTO.Description,
-                        Prerequisite = _CourseDTO.Prerequisite
+                        SchoolName = _SchoolDTO.SchoolName,
+                       
                     };
-                    _context.Courses.Add(c);
+                    _context.Schools.Add(c);
                     await _context.SaveChangesAsync();
                 }
             }
@@ -120,29 +113,20 @@ namespace CSBA6.Server.Controllers.app
 
             return Ok();
         }
-
-
-
-
-
-
-
-
         [HttpPut]
-        [Route("PutCourse")]
-        public async Task<IActionResult> PutCourse([FromBody] CourseDTO _CourseDTO)
+        [Route("PutSchool")]
+        public async Task<IActionResult> PutSchool([FromBody] SchoolDTO _SchoolDTO)
         {
             try
             {
-                Course c = await _context.Courses.Where(x => x.CourseNo == _CourseDTO.CourseNo).FirstOrDefaultAsync();
+                School c = await _context.Schools.Where(x => x.SchoolId == _SchoolDTO.SchoolId).FirstOrDefaultAsync();
 
                 if (c != null)
                 {
-                    c.Description = _CourseDTO.Description;
-                    c.Cost = _CourseDTO.Cost;
-                    c.Prerequisite = _CourseDTO.Prerequisite;
+                    c.SchoolName = _SchoolDTO.SchoolName;
+                  
 
-                    _context.Courses.Update(c);
+                    _context.Schools.Update(c);
                     await _context.SaveChangesAsync();
                 }
             }
@@ -163,19 +147,17 @@ namespace CSBA6.Server.Controllers.app
 
             return Ok();
         }
-
-
         [HttpDelete]
-        [Route("DeleteCourse/{_CourseNo}")]
-        public async Task<IActionResult> DeleteCourse(int _CourseNo)
+        [Route("DeleteSchool/{_SchoolID}")]
+        public async Task<IActionResult> DeleteSchool(int _SchoolID)
         {
             try
             {
-                Course c = await _context.Courses.Where(x => x.CourseNo == _CourseNo).FirstOrDefaultAsync();
+                School c = await _context.Schools.Where(x => x.SchoolId == _SchoolID).FirstOrDefaultAsync();
 
                 if (c != null)
                 {
-                    _context.Courses.Remove(c);
+                    _context.Schools.Remove(c);
                     await _context.SaveChangesAsync();
                 }
             }
@@ -196,7 +178,6 @@ namespace CSBA6.Server.Controllers.app
 
             return Ok();
         }
-
 
 
     }
