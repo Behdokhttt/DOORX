@@ -172,15 +172,19 @@ namespace DOOR.Server.Controllers.UD
 
         [HttpDelete]
         [Route("DeleteEnrollment/{_StudentID}/{_SectionID}/{_SchoolID}")]
-        public async Task<IActionResult> DeleteCourse(int _CourseNo)
+        public async Task<IActionResult> DeleteEnrollment(int _StudentID, int _SectionID, int _SchoolID)
         {
             try
             {
-                Course c = await _context.Courses.Where(x => x.CourseNo == _CourseNo).FirstOrDefaultAsync();
+                Enrollment c = await _context.Enrollments
+                 .Where(x => x.StudentId == _StudentID)
+                .Where(x => x.SectionId == _SectionID)
+                .Where(x => x.SchoolId == _SchoolID)
+                    .FirstOrDefaultAsync();
 
                 if (c != null)
                 {
-                    _context.Courses.Remove(c);
+                    _context.Enrollments.Remove(c);
                     await _context.SaveChangesAsync();
                 }
             }

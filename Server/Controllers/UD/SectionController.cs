@@ -28,6 +28,7 @@ using DOOR.Shared.DTO;
 using DOOR.Shared.Utils;
 using DOOR.Server.Controllers.Common;
 using static System.Collections.Specialized.BitVector32;
+using Section = DOOR.EF.Models.Section;
 
 namespace DOOR.Server.Controllers.UD
 {
@@ -109,7 +110,7 @@ namespace DOOR.Server.Controllers.UD
                         SectionNo = _SectionDTO.SectionNo,
                         StartDateTime = _SectionDTO.StartDateTime,
                         Location = _SectionDTO.Location,
-                        InstructorID = _SectionDTO.InstructorId,
+                        InstructorId = _SectionDTO.InstructorId,
                         Capacity = _SectionDTO.Capacity
                         
                         
@@ -156,7 +157,7 @@ namespace DOOR.Server.Controllers.UD
                     c.SectionNo = _SectionDTO.SectionNo;
                     c.StartDateTime = _SectionDTO.StartDateTime;
                     c.Location = _SectionDTO.Location;
-                    c.InstructorID = _SectionDTO.InstructorId;
+                    c.InstructorId = _SectionDTO.InstructorId;
                     c.Capacity = _SectionDTO.Capacity;
 
                     
