@@ -66,11 +66,12 @@ namespace DOOR.Server.Controllers.UD
         }
 
         [HttpGet]
-        [Route("GetSection/{_SectionID}")]
-        public async Task<IActionResult> GetSection(int _SectionID)
+        [Route("GetSection/{_SectionID}/{_SchoolID}")]
+        public async Task<IActionResult> GetSection(int _SectionID ,int _SchoolID)
         {
             SectionDTO? lst = await _context.Sections
                 .Where(x => x.SectionId == _SectionID)
+                .Where(x => x.SchoolId == _SchoolID)
                 .Select(sp => new SectionDTO
                 {
                     CreatedDate = sp.CreatedDate,
@@ -95,16 +96,25 @@ namespace DOOR.Server.Controllers.UD
         {
             try
             {
-                Section c = await _context.Sections.Where(x => x.SectionId == _SectionDTO.SectionId).FirstOrDefaultAsync();
+                Section c = await _context.Sections
+                    .Where(x => x.SectionId == _SectionDTO.SectionId)
+                    .Where(x => x.SchoolId == _SectionDTO.SchoolId)
+                    .FirstOrDefaultAsync();
 
                 if (c == null)
                 {
                     c = new Section
                     {
+                        CourseNo = _SectionDTO.CourseNo,
                         SectionNo = _SectionDTO.SectionNo,
                         StartDateTime = _SectionDTO.StartDateTime,
                         Location = _SectionDTO.Location,
-                        Capacity= _SectionDTO.Capacity
+                        InstructorID = _SectionDTO.InstructorId,
+                        Capacity = _SectionDTO.Capacity
+                        
+                        
+                        
+                        
                         
                     };
                     _context.Sections.Add(c);
@@ -135,16 +145,21 @@ namespace DOOR.Server.Controllers.UD
         {
             try
             {
-                Section c = await _context.Sections.Where(x => x.SectionId == _SectionDTO.SectionId).FirstOrDefaultAsync();
+                Section c = await _context.Sections
+                    .Where(x => x.SectionId == _SectionDTO.SectionId)
+                    .Where(x => x.SchoolId == _SectionDTO.SchoolId)
+                    .FirstOrDefaultAsync();
 
                 if (c != null)
                 {
-
-
+                    c.CourseNo = _SectionDTO.CourseNo;
                     c.SectionNo = _SectionDTO.SectionNo;
                     c.StartDateTime = _SectionDTO.StartDateTime;
                     c.Location = _SectionDTO.Location;
+                    c.InstructorID = _SectionDTO.InstructorId;
                     c.Capacity = _SectionDTO.Capacity;
+
+                    
 
                     _context.Sections.Update(c);
                     await _context.SaveChangesAsync();
@@ -169,12 +184,15 @@ namespace DOOR.Server.Controllers.UD
         }
 
         [HttpDelete]
-        [Route("DeleteSection/{_SectionID}")]
-        public async Task<IActionResult> DeleteSection(int _SectionID)
+        [Route("DeleteSection/{_SectionID}/{_SchoolID}")]
+        public async Task<IActionResult> DeleteSection(int _SectionID, int _SchoolID)
         {
             try
             {
-                Section c = await _context.Sections.Where(x => x.SectionId == _SectionID).FirstOrDefaultAsync();
+                Section c = await _context.Sections
+                    .Where(x => x.SectionId == _SectionID)
+                    .Where(x => x.SchoolId == _SchoolID)
+                    .FirstOrDefaultAsync();
 
                 if (c != null)
                 {
