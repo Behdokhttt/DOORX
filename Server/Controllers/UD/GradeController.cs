@@ -121,7 +121,7 @@ namespace DOOR.Server.Controllers.UD
                 {
                     c = new Grade
                     {
-
+                        GradeCodeOccurrence = _GradeDTO.GradeCodeOccurrence,
                         NumericGrade = _GradeDTO.NumericGrade,
                         Comments = _GradeDTO.Comments
                         
