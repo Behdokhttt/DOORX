@@ -92,6 +92,8 @@ namespace DOOR.Server.Controllers.UD
                 {
                     c = new Zipcode
                     {
+
+                        Zip = _ZipcodeDTO.Zip,
                         City = _ZipcodeDTO.City,
                         State = _ZipcodeDTO.State
 
