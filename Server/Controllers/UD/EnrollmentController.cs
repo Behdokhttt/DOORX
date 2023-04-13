@@ -102,6 +102,10 @@ namespace DOOR.Server.Controllers.UD
                 {
                     c = new Enrollment
                     {
+                        StudentId = _EnrollmentDTO.StudentId,
+                        SectionId = _EnrollmentDTO.SectionId,
+                        SchoolId = _EnrollmentDTO.SchoolId,
+                        
 
                         EnrollDate = _EnrollmentDTO.EnrollDate,
                         FinalGrade = _EnrollmentDTO.FinalGrade,
