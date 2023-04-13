@@ -99,7 +99,8 @@ namespace DOOR.Server.Controllers.UD
                 {
                     c = new GradeConversion
                     {
-
+                        SchoolId = _GradeConversionDTO.SchoolId,
+                        LetterGrade = _GradeConversionDTO.LetterGrade,
                         GradePoint = _GradeConversionDTO.GradePoint,
                         MaxGrade = _GradeConversionDTO.MaxGrade,
                         MinGrade = _GradeConversionDTO.MinGrade
