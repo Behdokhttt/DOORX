@@ -12,6 +12,9 @@ namespace DOOR.Shared.DTO
     {
         public int CourseNo { get; set; }
         [StringLength(50)]
+
+        public int SchoolId { get; set; }
+        [StringLength(50)]
         public string Description { get; set; } = null!;
         public decimal? Cost { get; set; }
         public int? Prerequisite { get; set; }
@@ -22,5 +25,8 @@ namespace DOOR.Shared.DTO
 
         public string ModifiedBy { get; set; } = null!;
         public DateTime ModifiedDate { get; set; }
+
+
+
     }
 }

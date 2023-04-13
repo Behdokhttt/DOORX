@@ -29,12 +29,12 @@ namespace DOOR.Shared.DTO
         public byte? Capacity { get; set; }
         [StringLength(30)]
         [Unicode(false)]
-        public string CreatedBy { get; set; } = null!;
-        public DateTime CreatedDate { get; set; }
+        public string? CreatedBy { get; set; }
+        public DateTime? CreatedDate { get; set; }
         [StringLength(30)]
         [Unicode(false)]
-        public string ModifiedBy { get; set; } = null!;
-        public DateTime ModifiedDate { get; set; }
+        public string? ModifiedBy { get; set; }
+        public DateTime? ModifiedDate { get; set; }
         [Key]
         [Precision(8)]
         public int SchoolId { get; set; }

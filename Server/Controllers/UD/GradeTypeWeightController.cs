@@ -101,6 +101,10 @@ namespace DOOR.Server.Controllers.UD
                 {
                     c = new GradeTypeWeight
                     {
+
+                        SchoolId = _GradeTypeWeightDTO.SchoolId,
+                        SectionId = _GradeTypeWeightDTO.SectionId,
+                        GradeTypeCode = _GradeTypeWeightDTO.GradeTypeCode,
                         NumberPerSection = _GradeTypeWeightDTO.NumberPerSection,
                         PercentOfFinalGrade = _GradeTypeWeightDTO.PercentOfFinalGrade,
                         DropLowest = _GradeTypeWeightDTO.DropLowest

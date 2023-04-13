@@ -108,10 +108,7 @@ namespace DOOR.Server.Controllers.UD
             try
             {
                 Student c = await _context.Students
-                .Where(x => x.StudentId == _StudentDTO.StudentId)
-                .Where(x => x.SchoolId == _StudentDTO.SchoolId)
-
-                  .FirstOrDefaultAsync();
+                .Where(x => x.StudentId == _StudentDTO.StudentId).Where(x => x.SchoolId == _StudentDTO.SchoolId).FirstOrDefaultAsync();
 
                 if (c == null)
                 {
@@ -124,7 +121,8 @@ namespace DOOR.Server.Controllers.UD
                         Zip = _StudentDTO.Zip,
                         Phone = _StudentDTO.Phone,
                         Employer = _StudentDTO.Employer,
-                        RegistrationDate = _StudentDTO.RegistrationDate
+                        RegistrationDate = _StudentDTO.RegistrationDate,
+                        SchoolId = _StudentDTO.SchoolId,
 
 
                         

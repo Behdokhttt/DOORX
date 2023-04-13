@@ -108,7 +108,7 @@ namespace DOOR.Server.Controllers.UD
                 {
                     c = new Instructor
                     {
-
+                        SchoolId= _InstructorDTO.SchoolId,
                         Salutation = _InstructorDTO.Salutation,
                         FirstName = _InstructorDTO.FirstName,
                         LastName = _InstructorDTO.LastName,

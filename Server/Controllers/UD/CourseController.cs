@@ -97,7 +97,8 @@ namespace CSBA6.Server.Controllers.app
                     {
                         Cost = _CourseDTO.Cost,
                         Description = _CourseDTO.Description,
-                        Prerequisite = _CourseDTO.Prerequisite
+                        Prerequisite = _CourseDTO.Prerequisite,
+                        SchoolId = _CourseDTO.SchoolId
                     };
                     _context.Courses.Add(c);
                     await _context.SaveChangesAsync();

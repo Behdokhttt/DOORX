@@ -106,13 +106,15 @@ namespace DOOR.Server.Controllers.UD
                 {
                     c = new Section
                     {
+
+
                         CourseNo = _SectionDTO.CourseNo,
                         SectionNo = _SectionDTO.SectionNo,
                         StartDateTime = _SectionDTO.StartDateTime,
                         Location = _SectionDTO.Location,
                         InstructorId = _SectionDTO.InstructorId,
-                        Capacity = _SectionDTO.Capacity
-                        
+                        Capacity = _SectionDTO.Capacity,
+                        SchoolId = _SectionDTO.SchoolId
                         
                         
                         
