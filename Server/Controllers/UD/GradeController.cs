@@ -121,6 +121,10 @@ namespace DOOR.Server.Controllers.UD
                 {
                     c = new Grade
                     {
+                        SchoolId = _GradeDTO.SchoolId,
+                        StudentId = _GradeDTO.StudentId,
+                        SectionId = _GradeDTO.SectionId,
+                        GradeTypeCode = _GradeDTO.GradeTypeCode,
                         GradeCodeOccurrence = _GradeDTO.GradeCodeOccurrence,
                         NumericGrade = _GradeDTO.NumericGrade,
                         Comments = _GradeDTO.Comments
