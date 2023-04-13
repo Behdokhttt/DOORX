@@ -50,6 +50,12 @@ namespace DOOR.Server.Controllers.UD
             List<GradeDTO> lst = await _context.Grades
                 .Select(sp => new GradeDTO
                 {
+
+                   SchoolId = sp.SchoolId,
+                   StudentId = sp.StudentId,
+                   SectionId = sp.SectionId,
+
+
                    Comments = sp.Comments,
                    CreatedBy = sp.CreatedBy,
                    CreatedDate = sp.CreatedDate,
@@ -78,6 +84,10 @@ namespace DOOR.Server.Controllers.UD
 
                 .Select(sp => new GradeDTO
                 {
+                    SchoolId = sp.SchoolId,
+                    StudentId = sp.StudentId,
+                    SectionId = sp.SectionId,
+
                     Comments = sp.Comments,
                     CreatedBy = sp.CreatedBy,
                     CreatedDate = sp.CreatedDate,
