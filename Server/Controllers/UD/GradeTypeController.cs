@@ -98,6 +98,9 @@ namespace DOOR.Server.Controllers.UD
                 {
                     c = new GradeType
                     {
+
+                        SchoolId = _GradeTypeDTO.SchoolId,
+                        GradeTypeCode = _GradeTypeDTO.GradeTypeCode,
                         Description = _GradeTypeDTO.Description
                         
                     };
