@@ -86,10 +86,7 @@ namespace DOOR.Server.Controllers.UD
         {
             try
             {
-                Zipcode c = await _context.Zipcodes
-                    
-                    
-                    .Where(x => x.Zip == _ZipcodeDTO.Zip).FirstOrDefaultAsync();
+                Zipcode c = await _context.Zipcodes.Where(x => x.Zip == _ZipcodeDTO.Zip).FirstOrDefaultAsync();
 
                 if (c == null)
                 {

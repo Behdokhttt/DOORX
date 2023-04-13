@@ -144,6 +144,10 @@ namespace DOOR.Server.Controllers.UD
 
                 if (c != null)
                 {
+
+                    c.StudentId = _EnrollmentDTO.StudentId;
+                    c.SectionId = _EnrollmentDTO.SectionId;
+                    c.SchoolId = _EnrollmentDTO.SchoolId;
                     c.EnrollDate = _EnrollmentDTO.EnrollDate;
                     c.FinalGrade = _EnrollmentDTO.FinalGrade;
                    
