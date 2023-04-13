@@ -89,6 +89,7 @@ namespace DOOR.Server.Controllers.UD
                 {
                     c = new School
                     {
+                        SchoolId = _SchoolDTO.SchoolId,
                         SchoolName = _SchoolDTO.SchoolName,
                        
                     };
